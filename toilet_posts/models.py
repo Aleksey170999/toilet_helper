@@ -1,14 +1,16 @@
 from django.db import models
-from django.contrib.auth.models import User
+
 
 class Author(models.Model):
     """
     Модель для создания информации об авторе
     """
-    user_name = models.CharField(max_length=20)
+    first_name = models.CharField(max_length=25, null=True)
+    last_name = models.CharField(max_length=25, null=True)
+    post_count = models.IntegerField(null=True)
 
     def __str__(self):
-        return self.user_name
+        return f"{self.first_name} {self.last_name}"
 
 
 class Toilet(models.Model):

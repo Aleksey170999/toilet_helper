@@ -1,12 +1,11 @@
 {% load static %}
 <html>
     <head>
-        <title>Django Girls blog</title>
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="{% static 'css/style.css'%}" type="text/css">
-
+        {% block head %}{% endblock %}
         <title>{% block title %}{% endblock %}</title>
     </head>
     <body>
@@ -15,7 +14,7 @@
                 <a href="{% url 'toilet-list'%}">Туалеты</a>
                 <a href="#">Рейтинг</a>
                 <a href="#">О нас</a>
-                <a href="#">Карта</a>
+                <a href="{% url 'toilet-map' %}">Карта</a>
                 <div class="animation start-home"></div>
             </nav>
         </div>
