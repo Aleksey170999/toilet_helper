@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Toilets{% endblock %}
+
+{% block body %}
+<div class="container">
+    <hr>
+    {% for toilet in object_list %}
+    {% if toilet.confirmed == True %}
+        <li><a href="{% url 'toilet-detail' toilet.pk %}">{{ toilet.address }}</a></li>
+        <li>{{ toilet.description }}</li>
+        <li>{{ toilet.author }}</li>
+        <li>{{ toilet.rating }}</li>
+        <li>{{ toilet.location }}</li>
+
+        <hr>
+    {% endif %}
+    {% endfor %}
+</div>
+{% endblock %}
