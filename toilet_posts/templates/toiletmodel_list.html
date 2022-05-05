@@ -3,17 +3,25 @@
 {% block title %}Toilets{% endblock %}
 
 {% block body %}
-<div class="container">
+<div class="container border rounded">
     <hr>
     {% for toilet in object_list %}
     {% if toilet.confirmed == True %}
-        <li><a href="{% url 'toilet-detail' toilet.pk %}">{{ toilet.address }}</a></li>
-        <li>{{ toilet.description }}</li>
-        <li>{{ toilet.author }}</li>
-        <li>{{ toilet.rating }}</li>
-        <li>{{ toilet.location }}</li>
+    <a href="{% url 'toilet-detail' toilet.pk %}">
+    <div class="row">
+        <div class="col-md-2">
+            <li class="list-group-item list-group-item-light"><img class="img-fluid" src="{{MEDIA_URL}}{{toilet.img}}"></li>
+        </div>
+        <div class="col-md-10">
+            <li class="list-group-item list-group-item-light">Адрес: {{ toilet.address }}</li>
+            <li class="list-group-item list-group-item-light">Описание: {{ toilet.description }}</li>
+            <li class="list-group-item list-group-item-light">Автор: {{ toilet.author }}</li>
+            <li class="list-group-item list-group-item-light">Рейтинг: {{ toilet.rating }}</li>
+        </div>
+    </div>
+    </a>
+            <hr>
 
-        <hr>
     {% endif %}
     {% endfor %}
 </div>

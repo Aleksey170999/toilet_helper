@@ -6,3 +6,9 @@ class ToiletSerializer(serializers.ModelSerializer):
     class Meta:
         model = Toilet
         fields = '__all__'
+
+
+class ToiletSerializerPersonolized(serializers.ModelSerializer):
+    class Meta:
+        model = Toilet
+        fields = '__all__'

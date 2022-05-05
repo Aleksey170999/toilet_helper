@@ -8,9 +8,14 @@ from rest_framework.response import Response
 
 
 class ToiletListViewPersonolized(ListAPIView):
-    model = Toilet
     serializer_class = ToiletSerializer
-    queryset = Toilet.objects.filter(user_tg_id__exact="949518502")
+
+    def get_queryset(self):
+        """
+        Получение отфильтрованного списка записей,
+        tg_id передается в представление через kwargs
+        """
+        return Toilet.objects.filter(user_tg_id=self.kwargs["tg_id"])
 
 
 class ToiletListView(ListAPIView):
