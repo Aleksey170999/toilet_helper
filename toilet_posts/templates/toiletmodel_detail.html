@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
+{% load toilet_posts_tags %}
 
 {% block title %}Toilet details{% endblock %}
+{% block head %}{% endblock %}
 
 {% block body %}
 <hr>
@@ -22,10 +24,11 @@
             </div>
         </div>
     </div>
+<hr>
 
-    {% for image in object.images.all %}
-        <img class="img-fluid" src="{{MEDIA_URL}}{{image.images}}">
-    {% endfor %}
+<!--    {% for image in object.images.all %}-->
+<!--        <img class="img-fluid" src="{{MEDIA_URL}}{{image.images}}">-->
+<!--    {% endfor %}-->
 </div>
 
 {% endblock %}

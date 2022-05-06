@@ -1,5 +1,9 @@
+import os
+
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
+
+from toilets import settings
 from .models import Toilet
 from toilet_posts.services import map_marker_detail
 
@@ -29,6 +33,11 @@ class ToiletDetailView(DetailView):
         context = super(ToiletDetailView, self).get_context_data(**kwargs)
         context['mapbox_access_token'] = mapbox_access_token
         context['map'] = map_marker_detail(context['toilet'])
+
+        path = settings.MEDIA_ROOT
+        img_list = os.listdir(path + '/images/gallery')
+        context['images'] = img_list
+
         return context
 
 

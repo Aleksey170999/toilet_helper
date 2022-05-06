@@ -22,6 +22,4 @@ def map_marker_detail(address):
     m = folium.Map(location=[55.7, 37.5], zoom_start=10)
     folium.Marker([lat, lng]).add_to(m)
     m = m._repr_html_()
-
-    print(f"{address}\n\n\n\n\n")
     return m
