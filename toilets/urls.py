@@ -3,7 +3,6 @@ from django.urls import path, include, reverse_lazy
 from django.views.generic import RedirectView
 
 from toilets import settings
-from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
 
 urlpatterns = [
@@ -16,6 +15,5 @@ urlpatterns = [
 ]
 
 if settings.DEBUG:
-    urlpatterns += staticfiles_urlpatterns() + static(
-        settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
-    )
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
