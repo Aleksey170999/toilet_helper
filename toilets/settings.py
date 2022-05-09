@@ -25,8 +25,10 @@ SECRET_KEY = 'django-insecure-75t51%9@)%$78=93$o&iu2qae1g4h2!=4c5_-g7yb4n4td^pc^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = [
+    'toilet-helper.herokuapp.com',
+    '127.0.0.1'
+]
 
 # Application definition
 
