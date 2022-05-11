@@ -66,9 +66,9 @@ WSGI_APPLICATION = 'toilets.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd750v0r1fjfo4e',
-        'USER': 'tjgffaxjgihheg',
-        'PASSWORD': 'd2d14606c062ec6fd6405f5133523dcb5f9ff70b87d11ee5cc8dc76c60d4d565',
+        'NAME': 'd43hv0cjl08e9q',
+        'USER': 'oedzsuqmsxxjyk',
+        'PASSWORD': '6462dd4215759664f6297e3143fe6805efe4bd7c1e29783e9c805f679d9d1412',
         'HOST': 'ec2-52-18-116-67.eu-west-1.compute.amazonaws.com',
         'PORT': '5432',
     }
