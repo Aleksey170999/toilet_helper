@@ -5,13 +5,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-75t51%9@)%$78=93$o&iu2qae1g4h2!=4c5_-g7yb4n4td^pc^'
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'toilet-helper.herokuapp.com',
 ]
-
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -62,7 +61,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'toilets.wsgi.application'
 
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -73,17 +71,6 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'toilets',
-#         'USER': 'aleksejtihonov',
-#         'PASSWORD': 'Dmesggrepeth1',
-#         'HOST': '127.0.0.1',
-#         'PORT': '5432',
-#     }
-# }
-
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -99,7 +86,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
 
 LANGUAGE_CODE = 'en-us'
 
@@ -118,9 +104,12 @@ STATICFILES_DIRS = [
 ]
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+try:
+    from local_settings import *
+except ImportError:
+    pass
