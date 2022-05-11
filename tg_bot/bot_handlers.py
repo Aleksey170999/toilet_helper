@@ -42,9 +42,9 @@ async def send_req(message: types.Message, state: FSMContext):
 
 async def toilet_list(message):
     if s.DEBUG:
-        get_response = requests.get("https://toilet-helper.herokuapp.com/api/toilets/list/")
-    else:
         get_response = requests.get("http://127.0.0.1:8000/api/toilets/list/")
+    else:
+        get_response = requests.get("https://toilet-helper.herokuapp.com/api/toilets/list/")
 
     for toilet in get_response.json():
         await message.answer(
