@@ -1,5 +1,6 @@
 import requests
 from geopy.geocoders import Nominatim
+from toilets import settings as s
 
 
 def get_addres_by_location(location):
@@ -19,8 +20,11 @@ def create_toilet_in_DB(dict):
                  "rating": dict['rating'],
                  "user_tg_id": dict['user_tg_id'],
                  })
+    if s.DEBUG:
+        response = requests.post("http://127.0.0.1:8000/api/toilets/create/", data=dict)
 
-    response = requests.post("http://127.0.0.1:8000/api/toilets/create/", data=dict)
+    else:
+        response = requests.post("https://toilet-helper.herokuapp.com/api/toilets/create/", data=dict)
 
 
 def dist_between_two_lat_lon(*args):
@@ -40,7 +44,11 @@ def find_closest_lat_lon(data, v):
 
 
 def find_loc_to_answer(data):
-    get_response = requests.get(f"http://127.0.0.1:8000/api/toilets/list/")
+    if s.DEBUG:
+        get_response = requests.get(f"http://127.0.0.1:8000/api/toilets/list/")
+    else:
+        get_response = requests.get(f"https://toilet-helper.herokuapp.com/api/toilets/list/")
+
     list_of_locs = []
     data_list = []
 

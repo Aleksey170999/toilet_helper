@@ -3,6 +3,7 @@ from aiogram import types, Dispatcher
 from aiogram.dispatcher import FSMContext
 from bot_package import create_toilet_in_DB, find_loc_to_answer, get_addres_by_location
 from bot_states import ToiletState, NearToiletState
+from toilets import settings as s
 
 
 async def start_handler(message):
@@ -40,14 +41,23 @@ async def send_req(message: types.Message, state: FSMContext):
 
 
 async def toilet_list(message):
-    get_response = requests.get("http://127.0.0.1:8000/api/toilets/list/")
+    if s.DEBUG:
+        get_response = requests.get("https://toilet-helper.herokuapp.com/api/toilets/list/")
+    else:
+        get_response = requests.get("http://127.0.0.1:8000/api/toilets/list/")
+
     for toilet in get_response.json():
         await message.answer(
             f"{toilet['author']}\n{toilet['address']}\n{toilet['description']}\n{toilet['rating']}\n{toilet['user_tg_id']}\n{toilet['location']}\n------------------------")
 
 
 async def toilet_list_personolized(message):
-    get_response = requests.get(f"http://127.0.0.1:8000/api/toilets/list/{message.from_user.id}/")
+    if s.DEBUG:
+        get_response = requests.get(f"http://127.0.0.1:8000/api/toilets/list/{message.from_user.id}/")
+
+    else:
+        get_response = requests.get(f"https://toilet-helper.herokuapp.com/api/toilets/list/{message.from_user.id}/")
+
     for toilet in get_response.json():
         await message.answer(
             f"{toilet['author']}\n{toilet['address']}\n{toilet['description']}\n{toilet['rating']}\n{toilet['user_tg_id']}\n{toilet['location']}\n------------------------")

@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-75t51%9@)%$78=93$o&iu2qae1g4h2!=4c5_-g7yb4n4td^pc^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     'toilet-helper.herokuapp.com',
@@ -81,28 +81,32 @@ WSGI_APPLICATION = 'toilets.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'toilets',
-#         'USER': 'aleksejtihonov',
-#         'PASSWORD': 'Dmesggrepeth1',
-#         'HOST': '127.0.0.1',
-#         'PORT': '5432',
-#     }
-# }
 
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd750v0r1fjfo4e',
-        'USER': 'tjgffaxjgihheg',
-        'PASSWORD': 'd2d14606c062ec6fd6405f5133523dcb5f9ff70b87d11ee5cc8dc76c60d4d565',
-        'HOST': 'ec2-52-18-116-67.eu-west-1.compute.amazonaws.com',
-        'PORT': '5432',
+if not DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'd750v0r1fjfo4e',
+            'USER': 'tjgffaxjgihheg',
+            'PASSWORD': 'd2d14606c062ec6fd6405f5133523dcb5f9ff70b87d11ee5cc8dc76c60d4d565',
+            'HOST': 'ec2-52-18-116-67.eu-west-1.compute.amazonaws.com',
+            'PORT': '5432',
+        }
     }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'toilets',
+            'USER': 'aleksejtihonov',
+            'PASSWORD': 'Dmesggrepeth1',
+            'HOST': '127.0.0.1',
+            'PORT': '5432',
+        }
 }
+
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
